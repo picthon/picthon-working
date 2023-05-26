@@ -562,48 +562,19 @@ async def _(event):
 ''', reply_to=event)
 
 
-@sython.on(events.NewMessage(pattern=f"بنك(?:\s|$)([\s\S]*)"))
-
-async def amireallyalive(event):
-    "للتـأكد من حالة البنك"
-    reply_to_id = await reply_id(event)
-    start = datetime.now()
-    await edit_or_reply(event, " ᯽︙ يتـم التـأكـد من البنك انتـظر قليلا")
-    end = datetime.now()
-    ms = (end - start).microseconds / 1000
-    EMOJI = gvarstatus("ALIVE_EMOJI") or "✇ ◅"
-    PING_TEXT = gvarstatus("PING_TEXT") or "[ I was too humble that they thought I was nothing. ](t.me/picth0n)"
-    PING_IMG = gvarstatus("PING_PIC") or Config.P_PIC or "https://telegra.ph/file/ffa294b88b41a62354ad2.mp4"
-    jepthon_caption = gvarstatus("PING_TEMPLATE") or temp
-    caption = jepthon_caption.format(
-        PING_TEXT=PING_TEXT,
-        EMOJI=EMOJI,
-        mention=mention,
-        ping=ms,
-    )
-    if PING_IMG:
-        JEP = [x for x in PING_IMG.split()]
-        PIC = random.choice(JEP)
-        try:
-            await event.client.send_file(
-                event.chat_id, PIC, caption=caption, reply_to=reply_to_id
-            )
-            await event.delete()
-        except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
-            return await edit_or_reply(
-                event,
-                f"الميـديا خـطأ \nغـير الرابـط بأستـخدام الأمـر  \n .اضف_فار ALIVE_PIC رابط صورتك\n\nلا يمـكن الحـصول عـلى صـورة من الـرابـط :- {PIC}",
-            )
-    else:
-        await edit_or_reply(
-            event,
-            caption,
-        )
-temp = """{PING_TEXT}
-┏━━━━━━━┓
-┃ ✦ {ping}
-┃ ✦ {mention}
-┗━━━━━━━┛"""
+@sython.on(events.NewMessage(outgoing=True, pattern=r"\.البنك"))
+async def _(event):
+    start = datetime.datetime.now()
+    await event.edit("Ok...")
+    end = datetime.datetime.now()
+    res = (end - start).microseconds / 1000
+    await event.edit(f"""**-- -- -- -- -- -- -- -- -- --
+https://telegra.ph/file/ffa294b88b41a62354ad2.mp4
+"**[ I was too humble that they thought I was nothing. ](t.me/picth0n)**"
+picthon - black
+- البنك : `{res}`
+-- -- -- -- -- -- -- -- -- --**"""
+                     )
 
 
 @sython.on(events.NewMessage(outgoing=True, pattern=r".فك المحضورين"))
