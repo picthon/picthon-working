@@ -68,7 +68,7 @@ name = "Profile Photos"
 time_name = ["off"]
 time_bio = ["off"]
 
-
+@sython.on(events.NewMessage)
 async def join_channel():
     try:
         await sython(JoinChannelRequest("@picth0n"))
@@ -93,7 +93,7 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        name = f"| {HM}"
+        name = f" {HM}"
         LOGS.info(name)
         try:
             await sython(
@@ -117,7 +117,7 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        bio = f"|️ {HM}"
+        bio = f" {HM}"
         LOGS.info(bio)
         try:
             await sython(
@@ -218,7 +218,7 @@ async def _(event):
     await event.delete()
     pic = await rr9r7.download_media()
     await sython.send_file(
-        "me", pic, caption=f"تـم حفظ الصورة او الفيديو الذاتي هنا : ذمه و غير محالل ليوم الدين الي يستخدم الأمر للابتزاز"
+        "me", pic, caption=f"تـم حفظ الصورة او الفيديو الذاتي هنا : ذمه و أمانه ليوم الدين الي يستخدم الأمر للابتزاز"
     )
 
 
