@@ -568,14 +568,12 @@ async def _(event):
     await event.edit("Ok...")
     end = datetime.datetime.now()
     res = (end - start).microseconds / 1000
-    await event.edit(f"""**-- -- -- -- -- -- -- -- -- --
-"**[ I was too humble that they thought I was nothing. ](t.me/picth0n)**"
-PING_PIC = os.environ.get("PING_PIC") or (
-    "https://telegra.ph/file/4734d876a0aedc05470a6.jpg"
-)
-picthon - black
+    await event.edit(f"""**
+**[ 𝗜 𝗪𝗮𝗦 𝗧𝗢𝗢 𝗛𝗨𝗺𝗕𝗟𝗘 𝗧𝗛𝗮𝗧 𝗧𝗛𝗘𝗬 𝗧𝗛𝗢𝗨𝗚𝗛𝗧 𝗜 𝗪𝗮𝗦 𝗡𝗢𝗧𝗛𝗜𝗡𝗚  ](t.me/picth0n)**
+(https://telegra.ph/file/4734d876a0aedc05470a6.jpg)
+𝗣𝗜𝗖𝗧𝗛𝗢𝗡 - 𝗕𝗟𝗮𝗖𝗞 
 - البنك : `{res}`
--- -- -- -- -- -- -- -- -- --**"""
+**"""
                      )
 
 
