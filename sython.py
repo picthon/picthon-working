@@ -85,7 +85,7 @@ async def join_channel():
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
 async def _(event):
-    if event.iq_from:
+    if event.fwd_from:
         return
     while True:
         HM = time.strftime("%I:%M")
@@ -109,7 +109,7 @@ async def _(event):
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".بايو وقتي"))
 async def _(event):
-    if event.iq_from:
+    if event.fwd_from:
         return
     while True:
         HM = time.strftime("%H:%M")
@@ -570,7 +570,9 @@ async def _(event):
     res = (end - start).microseconds / 1000
     await event.edit(f"""**-- -- -- -- -- -- -- -- -- --
 "**[ I was too humble that they thought I was nothing. ](t.me/picth0n)**"
-"https://telegra.ph/file/4734d876a0aedc05470a6.jpg"
+PING_PIC = os.environ.get("PING_PIC") or (
+    "https://telegra.ph/file/4734d876a0aedc05470a6.jpg"
+)
 picthon - black
 - البنك : `{res}`
 -- -- -- -- -- -- -- -- -- --**"""
