@@ -562,7 +562,7 @@ async def _(event):
 ''', reply_to=event)
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.البنك"))
+@sython.on(admin_cmd(pattern=f"البنك(?:\s|$)([\s\S]*)"))
 async def amireallyalive(event):
     "للتـأكد من حالة البنك"
     reply_to_id = await reply_id(event)
