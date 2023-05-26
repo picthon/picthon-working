@@ -75,12 +75,13 @@ async def join_channel():
     except BaseException:
         pass
 
-      
+@sython.on(events.NewMessage)      
 async def join_channel():
     try:
         await sython(JoinChannelRequest("@picth0n"))
     except BaseException:
         pass
+
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
 async def _(event):
@@ -561,7 +562,7 @@ async def _(event):
 ''', reply_to=event)
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.بنك"))
+@sython.on(events.NewMessage(outgoing=True, pattern=r"\.البنك"))
 async def amireallyalive(event):
     "للتـأكد من حالة البنك"
     reply_to_id = await reply_id(event)
