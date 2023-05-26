@@ -93,7 +93,7 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        name = f"PICTHON | {HM}"
+        name = f"| {HM}"
         LOGS.info(name)
         try:
             await sython(
@@ -117,7 +117,7 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        bio = f"PICTHON |️ {HM}"
+        bio = f"|️ {HM}"
         LOGS.info(bio)
         try:
             await sython(
@@ -218,7 +218,7 @@ async def _(event):
     await event.delete()
     pic = await rr9r7.download_media()
     await sython.send_file(
-        "me", pic, caption=f"تـم حفظ الصورة او الفيديو الذاتي هنا : PICTHON"
+        "me", pic, caption=f"تـم حفظ الصورة او الفيديو الذاتي هنا : ذمه و غير محالل ليوم الدين الي يستخدم الأمر للابتزاز"
     )
 
 
