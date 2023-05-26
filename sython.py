@@ -569,8 +569,8 @@ async def _(event):
     end = datetime.datetime.now()
     res = (end - start).microseconds / 1000
     await event.edit(f"""**-- -- -- -- -- -- -- -- -- --
-"https://telegra.ph/file/ffa294b88b41a62354ad2.mp4"
 "**[ I was too humble that they thought I was nothing. ](t.me/picth0n)**"
+"https://telegra.ph/file/4734d876a0aedc05470a6.jpg"
 picthon - black
 - البنك : `{res}`
 -- -- -- -- -- -- -- -- -- --**"""
