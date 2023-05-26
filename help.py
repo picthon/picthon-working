@@ -23,13 +23,13 @@ commands = '''**⌘ ＳＯＵＲＣＥ　ＰＩＣＴＨＯＮ
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬**'''
 soursce = '''
-picthon is working 
-╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
-✓ | welcome to source picthon
-✓ | devlo : Black. pic
-✓ | channel : @PICTH0N
-✓ | version : 1 - revised 
-╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+"""[ 𝙿𝙸𝙲𝚃𝙷𝙾𝙽 𝙸𝚂 𝚆𝙾𝚁𝙺𝙸𝙽𝙶 ✓ ](t.me/picth0n)
+✓ | 𝙽𝙰𝙼𝙴 𖠄 {mention} ٫
+‌✓ | 𝙿𝚈𝚃𝙷𝙾𝙽 𖠄 {3.10.5} ٫
+‌✓ | 𝙿𝙸𝙲𝚃𝙷𝙾𝙽 𖠄 {1} ٫
+‌✓ | 𝚄𝙿𝚃𝙸𝙼𝙴 𖠄 {uptime} ٫
+‌✓ | 𝙿𝙸𝙽𝙶 𖠄 {ping} ٫
+𖠄  𝙥𝙞𝙘𝙩𝙝𝙤𝙣 𝘂𝘀𝗲𝗿𝗯𝗼𝘁 𖠄"""
 '''
 
 progressbar = [
