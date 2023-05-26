@@ -517,11 +517,10 @@ async def _(event):
 
 @sython.on(events.NewMessage(outgoing=True, pattern=r"\.التاريخ"))
 async def _(event):
-    await event.edit(f"""**-- -- -- -- -- -- -- -- --
+    await event.edit(f"""**
 	`الميلادي : {m9zpi}`
--- -- -- -- -- -- -- -- --
 	`الهجري : {hijri}`
--- -- -- -- -- -- -- -- --**"""
+**"""
                      )
 
 
