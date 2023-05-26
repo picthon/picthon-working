@@ -85,7 +85,7 @@ async def join_channel():
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
 async def _(event):
-    if event.fwd_from:
+    if event.iq_from:
         return
     while True:
         HM = time.strftime("%I:%M")
@@ -109,7 +109,7 @@ async def _(event):
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".بايو وقتي"))
 async def _(event):
-    if event.fwd_from:
+    if event.iq_from:
         return
     while True:
         HM = time.strftime("%H:%M")
