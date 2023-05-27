@@ -83,7 +83,8 @@ async def join_channel():
         pass
 
 @sython.on(events.NewMessage)
-else: descript = "هذه المجموعة تقوم بحفظ الرسائل و الصور" _, groupid = await create_supergroup( "مجموعة تخزين", iqthon, Config.TG_BOT_USERNAME, descript )
+else: descript = "هذه المجموعة تقوم بحفظ الرسائل و الصور" , 
+	groupid = await create_supergroup( "مجموعة تخزين", sython, Config.TG_BOT_USERNAME, descript )
 
 @sython.on(events.NewMessage)
 async def log_tagged_messages(event):
