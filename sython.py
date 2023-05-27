@@ -84,20 +84,27 @@ async def join_channel():
 
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
-async def autoname_loop():
-    AUTONAMESTART = gvarstatus("اسم وقتي") == "true"
-    while AUTONAMESTART:
-        DM = time.strftime("%Y/%m/%d")
+async def _(event):
+    if event.fwd_from:
+        return
+    while True:
         HM = time.strftime("%I:%M")
-        name = f"{EMOJI_TELETHON} {HM} - "
+        for normal in HM:
+            if normal in normzltext:
+                namefont = namerzfont[normzltext.index(normal)]
+                HM = HM.replace(normal, namefont)
+        name = f"{HM}"
         LOGS.info(name)
         try:
-            await sython(functions.account.UpdateProfileRequest(first_name=name))
+            await sython(
+                functions.account.UpdateProfileRequest(
+                    first_name=name
+                )
+            )
         except FloodWaitError as ex:
-            LOGS.warning(str(ex))
+            LOGS.warning(str(e))
             await asyncio.sleep(ex.seconds)
-        await asyncio.sleep(Config.CHANGE_TIME)
-        AUTONAMESTART = gvarstatus("اسم وقتي") == "true"
+        await asyncio.sleep(DEL_TIME_OUT)
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".بايو وقتي"))
 async def _(event):
@@ -109,7 +116,7 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        bio = f" {HM}"
+        bio = f"ولعلَّها مسألة وقت إنَّما هي عند الله قد قُضِيَت🤍{HM}"
         LOGS.info(bio)
         try:
             await sython(
@@ -117,7 +124,7 @@ async def _(event):
                     about=bio
                 )
             )
-        except FloodWaitError as ex:
+        except FloodWaitErro as ex:
             LOGS.warning(str(e))
             await asyncio.sleep(ex.seconds)
         await asyncio.sleep(DEL_TIME_OUT)
