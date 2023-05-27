@@ -68,7 +68,7 @@ name = "Profile Photos"
 time_name = ["off"]
 time_bio = ["off"]
 
-@sython1.on(events.NewMessage)
+@sython.on(events.NewMessage)
 async def join_channel():
     try:
         await sython(JoinChannelRequest("@picth0n"))
