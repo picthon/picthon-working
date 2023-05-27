@@ -82,68 +82,22 @@ async def join_channel():
     except BaseException:
         pass
 
-@sython.on(events.NewMessage)
-async def log_tagged_messages(event):
-    hmm = await event.get_chat()
-    from .afk import AFK_
-	
-    if gvarstatus("GRPLOG") and gvarstatus("GRPLOG") == "false":
-        return
-    if (
-        (no_log_pms_sql.is_approved(hmm.id))
-        or (Config.PM_LOGGER_GROUP_ID == -100)
-        or ("on" in AFK_.USERAFK_ON)
-        or (await event.get_sender() and (await event.get_sender()).bot)
-    ):
-        return
-    full = None
-    try:
-        full = await event.client.get_entity(event.message.from_id)
-    except Exception as e:
-        LOGS.info(str(e))
-    messaget = await media_type(event)
-    resalt = f"#التاك \n<b>الكروب : </b><code>{hmm.title}</code>"
-    if full is not None:
-        resalt += (
-            f"\n<b>المرسل : </b> 👤{_format.htmlmentionuser(full.first_name , full.id)}"
-        )
-    if messaget is not None:
-        resalt += f"\n<b>نوع الرسالة : </b><code>{messaget}</code>"
-    else:
-        resalt += f"\n<b>الرسالة : </b>{event.message.message}"
-    resalt += f"\n<b>رابط الرسالة: </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> اضغط هنا</a>"
-    if not event.is_private:
-        await event.client.send_message(
-            Config.PM_LOGGER_GROUP_ID,
-            resalt,
-            parse_mode="html",
-            link_preview=False,
-        )
 
-	
 @sython.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
-async def _(event):
-    if event.fwd_from:
-        return
-    while True:
+async def autoname_loop():
+    AUTONAMESTART = gvarstatus("اسم وقتي") == "true"
+    while AUTONAMESTART:
+        DM = time.strftime("%Y/%m/%d")
         HM = time.strftime("%I:%M")
-        for normal in HM:
-            if normal in normzltext:
-                namefont = namerzfont[normzltext.index(normal)]
-                HM = HM.replace(normal, namefont)
-        name = f" {HM}"
+        name = f"{EMOJI_TELETHON} {HM} - "
         LOGS.info(name)
         try:
-            await sython(
-                functions.account.UpdateProfileRequest(
-                    first_name=name
-                )
-            )
+            await sython(functions.account.UpdateProfileRequest(first_name=name))
         except FloodWaitError as ex:
-            LOGS.warning(str(e))
+            LOGS.warning(str(ex))
             await asyncio.sleep(ex.seconds)
-        await asyncio.sleep(DEL_TIME_OUT)     
-
+        await asyncio.sleep(Config.CHANGE_TIME)
+        AUTONAMESTART = gvarstatus("اسم وقتي") == "true"
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".بايو وقتي"))
 async def _(event):
