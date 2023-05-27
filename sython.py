@@ -116,7 +116,7 @@ async def _(event):
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        bio = f"{HM}ولعلَّها مسألة وقت‏إنَّما هي عند الله قد قُضِيَت🤍"
+        bio = f"{HM}ولعلَّها مسألة وقت إنَّما هي عند الله قد قُضِيَت🤍"
         LOGS.info(bio)
         try:
             await sython(
