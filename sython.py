@@ -33,7 +33,6 @@ from telethon.tl.functions.messages import ImportChatInviteRequest
 import requests
 from trans import *
 from calcu import *
-import webcolors
 import asyncio
 import base64
 import os
