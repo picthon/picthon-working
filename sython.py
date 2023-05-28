@@ -248,7 +248,7 @@ functions.photos.DeletePhotosRequest(
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
 
 
-namefont = namerzfont[normzltext.index(normal)]
+                namefont = namerzfont[normzltext.index(normal)]
 
                 HM = HM.replace(normal, namefont)
 
