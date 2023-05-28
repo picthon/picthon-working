@@ -34,45 +34,25 @@ import requests
 from trans import *
 from calcu import *
 import webcolors
-
 import asyncio
-
 import base64
-
 import os
-
 import shutil
-
 import time
-
 from datetime import datetime
-
 from telethon import events
-
 from sython import get_string
-
 from telethon.errors import ChatAdminRequiredError
-
 from PIL import Image, ImageDraw, ImageFont
-
 from pySmartDL import SmartDL
-
 from telethon.errors import FloodWaitError, ChannelInvalidError
-
 from telethon.tl import functions
-
 from telethon import types
-
 from sython import BOTLOG_CHATID
-
 from ..Config import Config
-
 from ..helpers.utils import _format
-
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-
 from . import AUTONAME, DEFAULT_GROUP, DEFAULT_BIO, edit_delete, jepiq, logging
-
 from colour import Color
 
 
@@ -127,127 +107,90 @@ async def join_channel():
 
 plugin_category = "tools"
 
- 
-
 LOGS = logging.getLogger(__name__)
-
 DEFAULTUSER = gvarstatus("AUTONAME") or Config.ALIVE_NAME
-
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 autopic_path = os.path.join(os.getcwd(), "sython", "original_pic.png")
-
 digitalpic_path = os.path.join(os.getcwd(), "sython", "digital_pic.png")
-
 digital_group_pic_path = os.path.join(os.getcwd(), "sython", "digital_group_pic.png")
-
 autophoto_path = os.path.join(os.getcwd(), "sython", "photo_pfp.png")
-
 auto_group_photo_path = os.path.join(os.getcwd(), "sython", "photo_pfp.png")
-
 normzltext = "1234567890"
-
 namew8t = Config.NAME_ET or "اسم وقتي"
-
 biow8t = Config.BIO_ET or "بايو وقتي"
-
 phow8t = Config.PHOTO_ET or "الصورة الوقتية"
 
 def check_color(color):
-
     try:
-
         color = color.replace(" ", "")
-
         Color(color)
-
         return True
-
     except ValueError:
-
         return False
 
 async def digitalpicloop():
-
     colorco = gvarstatus("digitalpiccolor") or Config.DIGITAL_PIC_COLOR
-
     if colorco is None:
-
         colorco = "white"
-
     if not check_color(colorco):
-
         colorco = "red"
-
     colo = webcolors.name_to_rgb(colorco)
-
     DIGITALPICSTART = gvarstatus("digitalpic") == "true"
-
     i = 0
-
     while DIGITALPICSTART:
-
         if not os.path.exists(digitalpic_path):
-
             digitalpfp = gvarstatus("DIGITAL_PIC") or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
-
             downloader = SmartDL(digitalpfp, digitalpic_path, progress_bar=False)
-
             downloader.start(blocking=False)
-
             while not downloader.isFinished():
-
                 pass
-
         shutil.copy(digitalpic_path, autophoto_path)
-
         Image.open(autophoto_path)
-
         current_time = datetime.now().strftime("%I:%M")
-
         img = Image.open(autophoto_path)
-
         drawn_text = ImageDraw.Draw(img)
-
         sython = gvarstatus("DEFAULT_PIC") or "jepthon/helpers/styles/PaybAck.ttf"
-
-        fnt = ImageFont.truetype(jep, 65)
-
+        fnt = ImageFont.truetype(sython, 65)
         drawn_text.text((200, 200), current_time, font=fnt, fill=colo)
-
         img.save(autophoto_path)
-
         file = await jepiq.upload_file(autophoto_path)
-
         try:
-
             if i > 0:
-
                 await sython(
-	
-functions.photos.DeletePhotosRequest(
-
+                    functions.photos.DeletePhotosRequest(
                         await sython.get_profile_photos("me", limit=1)
-
                     )
-
                 )
-
             i += 1
-
             await sython(functions.photos.UploadProfilePhotoRequest(file))
-
             os.remove(autophoto_path)
-
             await asyncio.sleep(60)
-
         except BaseException:
-
             return
-
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
 
 
+	
+	
+
+async def autoname_loop():
+
+    AUTONAMESTART = gvarstatus("autoname") == "true"
+
+    while AUTONAMESTART:
+
+        time.strftime("%d-%m-%y")
+
+        HM = time.strftime("%I:%M")
+
+        for normal in HM:
+
+            if normal in normzltext:
+
+                namerzfont = gvarstatus("JP_FN") or "𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫𝟢"
+	
+	
                 namefont = namerzfont[normzltext.index(normal)]
 
                 HM = HM.replace(normal, namefont)
