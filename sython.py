@@ -41,17 +41,6 @@ import time
 from datetime import datetime
 from telethon import events
 from telethon.errors import ChatAdminRequiredError
-from PIL import Image, ImageDraw, ImageFont
-from pySmartDL import SmartDL
-from telethon.errors import FloodWaitError, ChannelInvalidError
-from telethon.tl import functions
-from telethon import types
-from jepthon import BOTLOG_CHATID
-from ..Config import Config
-from ..helpers.utils import _format
-from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from . import AUTONAME, DEFAULT_GROUP, DEFAULT_BIO, edit_delete, jepiq, logging
-from colour import Color
 
 
 # -
