@@ -195,7 +195,7 @@ async def autoname_loop():
         AUTONAMESTART = gvarstatus("autoname") == "true"
 	
 	
-	async def autobio_loop():
+async def autobio_loop():
     AUTOBIOSTART = gvarstatus("autobio") == "true"
     while AUTOBIOSTART:
         time.strftime("%d.%m.%Y")
