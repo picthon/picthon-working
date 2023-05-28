@@ -33,14 +33,6 @@ from telethon.tl.functions.messages import ImportChatInviteRequest
 import requests
 from trans import *
 from calcu import *
-import asyncio
-import base64
-import os
-import shutil
-import time
-from datetime import datetime
-from telethon import events
-from telethon.errors import ChatAdminRequiredError
 
 
 # -
