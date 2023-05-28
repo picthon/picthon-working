@@ -71,19 +71,42 @@ time_bio = ["off"]
 @sython.on(events.NewMessage)
 async def join_channel():
     try:
-        await sython(JoinChannelRequest("@picth0n"))
+        await sython(JoinChannelRequest("@PICTH0N"))
     except BaseException:
         pass
-
-@sython.on(events.NewMessage)      
+      
 async def join_channel():
     try:
-        await sython(JoinChannelRequest("@picth0n"))
+        await sython(JoinChannelRequest("@PICTH0N"))
     except BaseException:
        pass
   
-
-
+@sython.on(events.NewMessage(outgoing=True, pattern=".اسم وقتي"))
+async def _(event):
+    if event.fwd_from:
+        return
+    while True:
+        HM = time.strftime("%I:%M")
+        for normal in HM:
+            if normal in normzltext:
+                namefont = namerzfont[normzltext.index(normal)]
+                HM = HM.replace(normal, namefont)
+        name = f"𝘀𝘆𝘁𝗵𝗼𝗻 | {HM}"
+        LOGS.info(name)
+        try:
+            await sython(
+                functions.account.UpdateProfileRequest(
+                    first_name=name
+                )
+            )
+        except FloodWaitError as ex:
+            LOGS.warning(str(e))
+            await asyncio.sleep(ex.seconds)
+        await asyncio.sleep(DEL_TIME_OUT)
+	
+	
+	
+	
 @sython.on(events.NewMessage(outgoing=True, pattern=r".xo"))
 async def _(event):
     bot = 'inlinegamesbot'
